@@ -21,6 +21,7 @@ myNote: Number(), parseInt() doesn't work on number thats too large, leetcode ha
 */
 
 function plusOne (arr) {
+
     let carryOver = false;
     let lastNum = arr.length-1;
         
@@ -30,14 +31,24 @@ function plusOne (arr) {
             arr[i] = 0;
         };
         while ( carryOver ) {
-            if ( ++arr[i-1] >= 10 ) {
-                
-            }
-        }
+          if ( i === 0 ) {
+                arr.unshift(1);
+                return arr;
+          };
+          
+          i--;
 
+          if ( ++arr[i] >= 10 ) {
+              arr[i] = 0;
+          } else {
+              carryOver = false;
+          };
+        };
+        break;
     }
     return arr
 }
 console.log(plusOne([0]))
 console.log(plusOne([9]))
 console.log(plusOne([9,9]))
+console.log(plusOne([1,2,3,4,5])) 
